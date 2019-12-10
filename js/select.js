@@ -66,6 +66,18 @@ function eachIngrediant (ingrediant){
     });
     $("#result").html(results);
 }
+//// Loop get all step of instruction 
+
+function  eachStep(instruction) {
+    var instruction = "";
+    console.log(instruction);
+    instructions.forEach(el => {
+        console.log(el);
+        instruction +=`
+
+        `;
+    });
+}
 // //// get all data
 // function getRecipes(datas) {
 //     allData.datas.forEach( recs => {
