@@ -36,7 +36,8 @@ function getRecipe (id){
     allData.forEach(item => {
       if( item.id == id){
           eachRecipe (item.name , item.iconUrl,);
-          eachIngrediant (item.ingredients)
+          eachIngrediant (item.ingredients);
+          eachStep (item.instructions);
       }
     })
 }
@@ -68,15 +69,13 @@ function eachIngrediant (ingrediant){
 }
 //// Loop get all step of instruction 
 
-function  eachStep(instruction) {
+function eachStep(instructions) {
+    console.log(instructions);
     var instruction = "";
-    console.log(instruction);
-    instructions.forEach(el => {
-        console.log(el);
         instruction +=`
-
+            ${instructions}
         `;
-    });
+    $("#instructions").html(instruction);
 }
 // //// get all data
 // function getRecipes(datas) {
