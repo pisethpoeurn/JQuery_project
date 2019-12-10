@@ -77,30 +77,3 @@ function eachStep(instructions) {
         `;
     $("#instructions").html(instruction);
 }
-// //// get all data
-// function getRecipes(datas) {
-//     allData.datas.forEach( recs => {
-//         // your recipe can get here example: recs.name
-//         getIngrediant(recs); // get all ingrediant
-//     });
-// }
-
-// //// get all ingrediant [name function]
-// function getIngrediant(recipe) {
-//     recipe.allData.ingredients.forEach(ing => {
-//             showIngrediantTable(ing);
-//     })
-// }
-// // display ingrediant in table [arrow function]
-// var showIngrediantTable = (show) => {
-//     var ingrediant = "";
-//         ingrediant += `
-//             <tr>
-//                 <td><img src="${show.iconUrl}" width="25" class="img-fluid"></td>
-//                 <td>${show.quantity}</td>
-//                 <td>${show.unit[0]}</td>
-//                 <td>${show.name}</td>
-//             </tr>
-//         `;
-//         $('#result').append(ingrediant);
-// }
