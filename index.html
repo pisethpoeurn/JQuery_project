@@ -14,7 +14,18 @@
             <div class="col-4">
                 <select class=" form-control" id="select">
                     <option value="">Choose your recipe....</option>
-                </select>
+                </select><br><br>
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" id="minus" type="submit">-</button>
+                    </div>
+                    <input type="text" id="num" disabled class="form-control text-center" value="0"
+                        placeholder="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" id="add" type="submit">+</button>
+                    </div>
+                </div>
+                <div id="out_num"></div>
             </div>
             <div class="col-4"></div>
         </div><br><br>
@@ -27,12 +38,14 @@
         <br><br>
         <div class="row">
             <div class="col-6">
-                <table class="table table-bordered" id="result">
-
-                </table>
+                <div id="result_recipe"></div>
+                <br>
+                <table class="table table-borderless" id="result"></table>
             </div>
             <div class="col-6" >
-                <table class="table table-bordered" id="instructions">
+                <div id="result_intruction"></div>
+                <br>
+                <div id="instructions"></div>
             </div>
         </div>
     </div>

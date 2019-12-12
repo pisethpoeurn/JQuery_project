@@ -9,6 +9,16 @@ $(document).ready(function(){
         var recipeID = $("#select").val();
         getRecipe(recipeID)
     });
+     /// click add and get value from input 
+     $("#add").on('click',function(){
+        var input = $("#num").val();
+        addNum(input);
+    })
+    //// click minus and get value from input 
+    $('#minus').on('click',function(){
+        var input = $("#num").val();
+        minusNum(input);
+    })
 });
 //// Reques API 
 function repuestApi() {
@@ -53,6 +63,7 @@ function  eachRecipe( name , img ){
 
 /// get Ingrediant 
 function eachIngrediant (ingrediant){
+    $("#result_recipe").html("Ingrediant");
     var results = "";
     ingrediant.forEach(element => {
         // console.log(element)
@@ -70,10 +81,35 @@ function eachIngrediant (ingrediant){
 //// Loop get all step of instruction 
 
 function eachStep(instructions) {
-    console.log(instructions);
+    $("#result_intruction").html("Intruction");
+    var splitStep = instructions.split("<step>");
     var instruction = "";
-        instruction +=`
-            ${instructions}
-        `;
-    $("#instructions").html(instruction);
+    for( let i = 1 ; i< splitStep.length ; i++){
+            instruction +=`
+                <p class="text-success"> <strong>step${i}</strong></p>
+                <p> ${splitStep[i]}</p>
+            `;
+        }
+        $("#instructions").html(instruction);
+}
+
+///// countter 
+////increas Number 
+var addNum = (num) => {
+    var add = parseInt( num) + 1;
+    if( add <= 15){
+        $("#num").val(add);
+        var result = add * 5;
+        $("#out_num").html(result);
+      
+    }
+};
+//// Decreas Number 
+var minusNum = (num) => {
+    var minus = parseInt(num ) -1;
+    if( minus >= 0){
+        $("#num").val(minus);
+        var results = minus * 5;
+        $('#out_num').html(results)
+    }
 }
