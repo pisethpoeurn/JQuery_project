@@ -42,7 +42,6 @@ function chooseRecipe(recipe) {
 
 //// get ID of each elements
 function getRecipe (id){
-    console.log(id);
     allData.forEach(item => {
       if( item.id == id){
           eachRecipe (item.name , item.iconUrl,);
@@ -61,18 +60,17 @@ function  eachRecipe( name , img ){
     $("#outs").html(result);
 }
 
-/// get Ingrediant 
+/// get Ingrediant and display to html 
 function eachIngrediant (ingrediant){
     $("#result_recipe").html("Ingrediant");
     var results = "";
     ingrediant.forEach(element => {
-        // console.log(element)
         results +=`
             <tr>
                 <td> <img src="${element.iconUrl}" width="40"></td>
-                <td>${element.name}</td>
-                <td>${element.unit[0].toLowerCase()}</td>
                 <td>${element.quantity}</td>
+                <td>${element.unit[0].toLowerCase()}</td>
+                <td>${element.name}</td>
             </tr>
         `;
     });
