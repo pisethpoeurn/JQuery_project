@@ -1,10 +1,12 @@
 /// Get Url 
 function getUrl(){
     var url = "https://raw.githubusercontent.com/radytrainer/test-api/master/test.json";
-    return url;
+    return url;  // return function 
 };
+
 $(document).ready(function(){
     repuestApi();
+    /// click select one recipe 
     $("#select").on('change',function(){
         var recipeID = $("#select").val();
         getRecipe(recipeID)
@@ -20,6 +22,7 @@ $(document).ready(function(){
         minusNum(input);
     })
 });
+
 //// Reques API 
 function repuestApi() {
     $.ajax({
@@ -28,7 +31,8 @@ function repuestApi() {
         success: (data) => chooseRecipe(data.recipes),
         error: () => console.log("Cannot get data"),
     });
-}
+};
+
 //// get name to select option 
 var allData = [];
 function chooseRecipe(recipe) {
@@ -44,12 +48,13 @@ function chooseRecipe(recipe) {
 function getRecipe (id){
     allData.forEach(item => {
       if( item.id == id){
-          eachRecipe (item.name , item.iconUrl,);
-          eachIngrediant (item.ingredients);
-          eachStep (item.instructions);
+          eachRecipe (item.name , item.iconUrl,); // call from eachRecipe
+          eachIngrediant (item.ingredients); ///  call from eachIngrediant 
+          eachStep (item.instructions); /// call from eachStep function 
       }
     })
 }
+
 //// Dispaly Recipe to html 
 function  eachRecipe( name , img ){
     var results = "";
@@ -76,8 +81,8 @@ function eachIngrediant (ingrediant){
     });
     $("#result").html(results);
 }
-//// Loop get all step of instruction 
 
+//// Loop to get all step of instruction and display it to html 
 function eachStep(instructions) {
     $("#result_intruction").html("Intruction");
     var splitStep = instructions.split("<step>");
@@ -87,12 +92,11 @@ function eachStep(instructions) {
                 <p class="text-success"> <strong>step${i}</strong></p>
                 <p> ${splitStep[i]}</p>
             `;
-        }
+        };
         $("#instructions").html(instruction);
-}
+};
 
-///// countter 
-////increas Number 
+///// countter when we click on button it will increas the number 
 var addNum = (num) => {
     var add = parseInt( num) + 1;
     if( add <= 15){
@@ -100,14 +104,15 @@ var addNum = (num) => {
         var result = add * 5;
         $("#out_num").html(result);
       
-    }
+    };
 };
-//// Decreas Number 
+
+//// Decreas Number when we click on button it will decreas the number 
 var minusNum = (num) => {
     var minus = parseInt(num ) -1;
     if( minus >= 0){
         $("#num").val(minus);
         var results = minus * 5;
         $('#out_num').html(results)
-    }
-}
+    };
+};
