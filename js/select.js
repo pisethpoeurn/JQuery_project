@@ -103,7 +103,7 @@ function eachStep(instructions) {
 
 ///// countter when we click on button it will increas the number 
 var addNum = (num) => {
-    var add = parseInt( num) + 1;
+    var add = parseInt(num) + 1;
     if( add <= 15){
         $("#num").val(add);
         var result = add * 5;
@@ -121,3 +121,7 @@ var minusNum = (num) => {
         $('#out_num').html(results)
     };
 };
+
+var cumpute = (compute) => {
+    var newGuest = "";
+}
