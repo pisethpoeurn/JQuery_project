@@ -10,6 +10,7 @@ $(document).ready(function(){
     $("#select").on('change',function(){
         var recipeID = $("#select").val();
         getRecipe(recipeID)
+        $("#show_hide").show();
     });
      /// click add and get value from input 
      $("#add").on('click',function(){
@@ -21,6 +22,7 @@ $(document).ready(function(){
         var input = $("#num").val();
         minusNum(input);
     })
+    $("#show_hide").hide();
 });
 
 //// Reques API 
@@ -48,7 +50,7 @@ function chooseRecipe(recipe) {
 function getRecipe (id){
     allData.forEach(item => {
       if( item.id == id){
-          eachRecipe (item.name , item.iconUrl,); // call from eachRecipe
+          eachRecipe (item.name , item.iconUrl , item.nbGuests); // call from eachRecipe
           eachIngrediant (item.ingredients); ///  call from eachIngrediant 
           eachStep (item.instructions); /// call from eachStep function 
       }
@@ -56,18 +58,21 @@ function getRecipe (id){
 }
 
 //// Dispaly Recipe to html 
-function  eachRecipe( name , img ){
+function  eachRecipe( name , img , guest ){
     var results = "";
+    var nbGuest = "";
+    nbGuest +=`<input type="text" id="num" disabled class="form-control text-center" value="${guest}">`;
+    $("#nbGuest").html(nbGuest);
     results +=` <h3>${name}</h3>`;
     $("#out").html(results);
     var result = "";
-    result +=`<img src="${img}" width="100">`;
+    result +=`<img src="${img}" width="100" height="100">`;
     $("#outs").html(result);
 }
 
 /// get Ingrediant and display to html 
 function eachIngrediant (ingrediant){
-    $("#result_recipe").html("Ingrediant");
+    $("#result_recipe").html("Ingrediants");
     var results = "";
     ingrediant.forEach(element => {
         results +=`
@@ -84,16 +89,16 @@ function eachIngrediant (ingrediant){
 
 //// Loop to get all step of instruction and display it to html 
 function eachStep(instructions) {
-    $("#result_intruction").html("Intruction");
+    $("#result_intruction").html("Instructions");
     var splitStep = instructions.split("<step>");
     var instruction = "";
     for( let i = 1 ; i< splitStep.length ; i++){
-            instruction +=`
-                <p class="text-success"> <strong>step${i}</strong></p>
-                <p> ${splitStep[i]}</p>
-            `;
-        };
-        $("#instructions").html(instruction);
+        instruction +=`
+            <p class="text-success"> <strong>Step:${i}</strong></p>
+            <p> ${splitStep[i]}</p>
+        `;
+    };
+    $("#instructions").html(instruction);
 };
 
 ///// countter when we click on button it will increas the number 
