@@ -4,6 +4,7 @@ function getUrl(){
     return url;  // return function 
 };
 
+var member;
 $(document).ready(function(){
     repuestApi();
     /// click select one recipe 
@@ -11,7 +12,11 @@ $(document).ready(function(){
         var recipeID = $("#select").val();
         getRecipe(recipeID)
         $("#show_hide").show();
+        $("#line").show();
     });
+    $("#show_hide").hide();
+    $("#line").hide();
+
      /// click add and get value from input 
      $("#add").on('click',function(){
         var input = $("#num").val();
@@ -22,7 +27,6 @@ $(document).ready(function(){
         var input = $("#num").val();
         minusNum(input);
     })
-    $("#show_hide").hide();
 });
 
 //// Reques API 
@@ -101,9 +105,11 @@ function eachStep(instructions) {
     $("#instructions").html(instruction);
 };
 
+
 ///// countter when we click on button it will increas the number 
 var addNum = (num) => {
     var add = parseInt(num) + 1;
+    member = addNum;
     if( add <= 15){
         $("#num").val(add);
         var result = add * 5;
@@ -115,6 +121,7 @@ var addNum = (num) => {
 //// Decreas Number when we click on button it will decreas the number 
 var minusNum = (num) => {
     var minus = parseInt(num ) -1;
+    member = addNum;
     if( minus >= 0){
         $("#num").val(minus);
         var results = minus * 5;
@@ -122,6 +129,8 @@ var minusNum = (num) => {
     };
 };
 
-var cumpute = (compute) => {
-    var newGuest = "";
+/// function to add number
+function compute(member) {
+    return  parseInt(member);
 }
+

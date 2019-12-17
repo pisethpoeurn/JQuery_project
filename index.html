@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Project</title>
 </head>
-
+<style>
+    #line {
+      border-left: 1px solid black;
+      height: 390px;
+      position: absolute;
+      left: 43%;
+      margin-left: -3px;
+      top: 50;
+    }
+</style>
 <body>
     <div class="container mt-5">
         <div class="row">
@@ -23,17 +32,17 @@
         <hr>
         <div class="row">
             <div class="col-3"></div>
-            <div class="col-3" id="out"></div>
-            <div class="col-3" id="outs"></div>
+            <div class="col-3 text-right" id="out"></div>
+            <div class="col-3 " id="outs"></div>
             <div class="col-3"></div>
         </div>
         <br>
         <div class="row" id="show_hide">
-            <div class="col-4" ><h3 class="text-right">Numbers of Person</h3></div>
+            <div class="col-4" ><h3 class="text-right text-white">Numbers of Person</h3></div>
             <div class="col-4">
                 <div class="input-group mb-3">
                     <div class="input-group-append">
-                        <button class="btn btn-success" id="minus" type="submit">-</button>
+                        <button class="btn btn-danger" id="minus" type="submit">-</button>
                     </div>
                     <div id="nbGuest"></div>
                     <div class="input-group-append">
@@ -46,12 +55,13 @@
         </div>
         <br><br>
         <div class="row">
-            <div class="col-6">
+            <div class="col-5">
                 <h3 id="result_recipe" class="text-center"></h3>
                 <br>
-                <table class="table table-borderless" id="result"></table>
+                <table class="table table-border" id="result"></table>
             </div>
-            <div class="col-6">
+            <div class="col-2" id="line"></div>
+            <div class="col-5">
                 <h3 id="result_intruction" class="text-center"></h3>
                 <br>
                 <div id="instructions"></div>
