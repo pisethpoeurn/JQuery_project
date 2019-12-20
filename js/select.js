@@ -126,7 +126,7 @@ var minusNum = (num) => {
         computeQuantity($("#num").val())
     };
 };
-
+/// Compute the number od guest and display it to html 
 function computeQuantity(compute){
     var quan;
     var newQuan;
@@ -145,38 +145,3 @@ function computeQuantity(compute){
     $("#result").html(result);
     })
 }
-
-
-
-
-
-
-
-/// in document ///
-// // calculate
-// $('#add').on('click', function(){
-//     var input = $('#value').val();
-//     userInput(input);
-    
-// })
-// $('#low').on('click', function(){
-//     var input = $('#value').val();
-//     lowInput(input);
-// })
-
-// // calculate
-// function userInput(values){
-//     var getValue = parseInt(values) + 1;
-//     if(getValue <= 15){
-//        $('#value').val(getValue);    
-//        mal($("#value").val());
-//     }
-// }
-
-// function lowInput(values){
-//     var lowValue = parseInt(values) - 1;
-//     if(lowValue >= 1 ){
-//     $('#value').val(lowValue);
-//     mal($("#value").val());
-//     }  
-// }
