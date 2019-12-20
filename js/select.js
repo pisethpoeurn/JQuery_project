@@ -57,6 +57,9 @@ function getRecipe (id){
           eachRecipe (item.name , item.iconUrl , item.nbGuests); // call from eachRecipe
           eachIngrediant (item.ingredients); ///  call from eachIngrediant 
           eachStep (item.instructions); /// call from eachStep function 
+            
+          getQuantiy = item;
+            oldGuest = item.nbGuests;
       }
     })
 }
@@ -64,9 +67,9 @@ function getRecipe (id){
 //// Dispaly Recipe to html 
 function  eachRecipe( name , img , guest ){
     var results = "";
-    var nbGuest = "";
-    nbGuest +=`<input type="text" id="num" disabled class="form-control text-center" value="${guest}">`;
-    $("#nbGuest").html(nbGuest);
+    var Guest = "";
+    Guest +=`<input type="text" id="num" disabled class="form-control text-center" value="${guest}">`;
+    $("#nbGuest").html(Guest);
     results +=` <h3>${name}</h3>`;
     $("#out").html(results);
     var result = "";
@@ -105,15 +108,12 @@ function eachStep(instructions) {
     $("#instructions").html(instruction);
 };
 
-
 ///// countter when we click on button it will increas the number 
 var addNum = (num) => {
     var add = parseInt(num) + 1;
-    member = addNum;
     if( add <= 15){
         $("#num").val(add);
-        var result = add * 5;
-        $("#out_num").html(result);
+        computeQuantity($("#num").val())
       
     };
 };
@@ -121,16 +121,62 @@ var addNum = (num) => {
 //// Decreas Number when we click on button it will decreas the number 
 var minusNum = (num) => {
     var minus = parseInt(num ) -1;
-    member = addNum;
-    if( minus >= 0){
+    if( minus >= 1){
         $("#num").val(minus);
-        var results = minus * 5;
-        $('#out_num').html(results)
+        computeQuantity($("#num").val())
     };
 };
 
-/// function to add number
-function compute(member) {
-    return  parseInt(member);
+function computeQuantity(compute){
+    var quan;
+    var newQuan;
+    var result = "";
+    getQuantiy.ingredients.forEach(el => {
+        quan = el.quantity/oldGuest;
+        newQuan = quan*compute;
+        result += `
+        <tr>
+        <td><img src="${el.iconUrl}" style="width:50px"></td>
+        <td id='quantity'>${newQuan}</td>
+        <td>${el.unit[0]}</td>
+        <td>${el.name}</td>
+        </tr>
+    `;
+    $("#result").html(result);
+    })
 }
 
+
+
+
+
+
+
+/// in document ///
+// // calculate
+// $('#add').on('click', function(){
+//     var input = $('#value').val();
+//     userInput(input);
+    
+// })
+// $('#low').on('click', function(){
+//     var input = $('#value').val();
+//     lowInput(input);
+// })
+
+// // calculate
+// function userInput(values){
+//     var getValue = parseInt(values) + 1;
+//     if(getValue <= 15){
+//        $('#value').val(getValue);    
+//        mal($("#value").val());
+//     }
+// }
+
+// function lowInput(values){
+//     var lowValue = parseInt(values) - 1;
+//     if(lowValue >= 1 ){
+//     $('#value').val(lowValue);
+//     mal($("#value").val());
+//     }  
+// }
