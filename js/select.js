@@ -13,9 +13,12 @@ $(document).ready(function(){
         getRecipe(recipeID)
         $("#show_hide").show();
         $("#line").show();
+        $("#row-result").show();
+
     });
     $("#show_hide").hide();
     $("#line").hide();
+    $("#row-result").hide();
 
      /// click add and get value from input 
      $("#add").on('click',function(){
