@@ -57,9 +57,8 @@ function getRecipe (id){
           eachRecipe (item.name , item.iconUrl , item.nbGuests); // call from eachRecipe
           eachIngrediant (item.ingredients); ///  call from eachIngrediant 
           eachStep (item.instructions); /// call from eachStep function 
-            
           getQuantiy = item;
-            oldGuest = item.nbGuests;
+          oldGuest = item.nbGuests;
       }
     })
 }
